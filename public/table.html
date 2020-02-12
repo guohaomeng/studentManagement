@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/layui.css">
+
+    <title>layuiTest</title>
+    <style>
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+        .layui-layout-admin .layui-body{
+            bottom: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-layout layui-layout-admin" style="min-width: 700px;">
+        <div class="layui-header header header-demo" winter="">
+            <div class="layui-main">
+                <a href="/">
+                    <span
+                        style="font-size: 18px;line-height: 60px;text-align: center;height: 60px;width: 200px;color: white;">学籍管理系统</span>
+                </a>
+
+
+                <ul style="float: right;" class="layui-nav">
+                    <li class="layui-nav-item">
+                        <a href="./console.html">控制台<span class="layui-badge">9</span></a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="">个人中心<span class="layui-badge-dot"></span></a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href=""><img src="./images/static/logo.jpg" class="layui-nav-img">未登录</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">修改信息</a></dd>
+                            <dd><a href="javascript:;">安全管理</a></dd>
+                            <dd><a href="/">退了</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+
+                <ul class="layui-nav layui-nav-tree">
+
+                    <li class="layui-nav-item">
+                        <a class="javascript:;" href="javascript:;"><i class="layui-icon layui-icon-username"
+                                style="font-size: 18px; color: white;"></i>学生用户<span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="./index.html">信息录入</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a class="javascript:;" href="javascript:;"><i class="layui-icon layui-icon-list"
+                                style="font-size: 22px; color: white;"></i>信息管理<span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                            <dd class="">
+                                <a href="/demo/grid.html">学生信息查看</a>
+                            </dd>
+                            <dd class="">
+                                <a href="/demo/admin.html">详细信息</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="layui-body" style="min-width: 450px;">
+            <h1>信息展示</h1>
+            <div style="display:none;" id="toolbar1">
+                <button type="button" class="layui-btn layui-btn-sm">增加</button>
+                <button type="button" class="layui-btn layui-btn-sm ">编辑</button>
+                <button type="button" class="layui-btn layui-btn-sm">删除</button>       
+            </div>
+            <table id="demo" lay-filter="test"></table>
+        </div>
+    </div>
+</body>
+<script src="./layui.js"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+
+
+    })
+    layui.use('table', function () {
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            skin: 'row'
+            ,even :true
+            ,elem: '#demo'
+            , height: 512
+            , url: '/testdata' //数据接口
+            , page: true //开启分页
+            , cols: [[ //表头
+                { type: 'numbers',fixed: 'left' }
+                ,{ type: 'checkbox',fixed:'left' }
+                ,{ field: 'id', title: '学号', width: 100, sort: true,  }
+                , { field: 'name', title: '姓名', width: 120 }
+                , { field: 'sex', title: '性别', width: 80, sort: true }
+                , {field:'birthday1',title:'生日',width:120,sort:true}
+                , { field: 'xueyuan', title: '学院', width: 177 }
+                , {field:'athome',title:'在家',width:80,sort:true}
+                , { field: 'group[front]', title: '前端组', width: 120, sort: true }
+                , { field: 'group[end]', title: '后端组', width: 120, sort: true }
+                , { field: 'group[database]', title: '数据库组', width: 120, sort: true }
+                , { field: 'group[image]', title: '图像组', width: 120, sort: true }
+                , { field: 'comment', title: '评论', width: 180 }
+                
+            ]]
+            ,toolbar : '#toolbar1'
+            ,defaultToolbar: ['filter', 'print', 'exports']
+        });
+
+
+
+    });
+  
+
+</script>
+<script>
+
+</script>
+
+</html>

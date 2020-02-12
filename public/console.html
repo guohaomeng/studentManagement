@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/layui.css">
+
+    <title>layuiTest</title>
+    <style>
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #formcontainer {
+            width: 75%;
+            margin: auto;
+        }
+
+        @media screen and (max-width: 700px) {
+            #formcontainer {
+                width: 95%;
+                float: left;
+            }
+        }
+        #container{
+            min-width: 700px;
+        }
+        #console1{
+            background-image: url("./images/static/001.jpg");
+            background-size: cover;
+            
+        }
+        #console2{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.404);
+        }
+        .layui-layout-admin .layui-body{
+            bottom: 0px;
+        }
+    </style>
+</head>
+
+<body>
+  <div id="container" class="layui-layout layui-layout-admin">
+    <div class="layui-header header header-demo" winter="">
+        <div class="layui-main">
+            <a  href="/">
+                <span style="font-size: 18px;line-height: 60px;text-align: center;height: 60px;width: 200px;color: white;">学籍管理系统</span>
+            </a>
+            
+
+            <ul style="float: right;" class="layui-nav">
+                <li class="layui-nav-item">
+                  <a href="">控制台<span class="layui-badge">9</span></a>
+                </li>
+                <li class="layui-nav-item">
+                  <a href="">个人中心<span class="layui-badge-dot"></span></a>
+                </li>
+                <li class="layui-nav-item">
+                  <a href=""><img src="./images/static/logo.jpg" class="layui-nav-img">我</a>
+                  <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">修改信息</a></dd>
+                    <dd><a href="javascript:;">安全管理</a></dd>
+                    <dd><a href="javascript:;">退了</a></dd>
+                  </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+
+            <ul class="layui-nav layui-nav-tree">
+                
+                <li class="layui-nav-item">
+                    <a class="javascript:;" href="javascript:;"><i class="layui-icon layui-icon-username" style="font-size: 18px; color: white;"></i>学生用户<span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="./index.html">信息录入</a>
+                        </dd>
+                    </dl>
+                </li>
+
+                <li class="layui-nav-item">
+                    <a class="javascript:;" href="javascript:;"><i class="layui-icon layui-icon-list" style="font-size: 22px; color: white;"></i>信息管理<span class="layui-nav-more"></span></a>
+                    <dl class="layui-nav-child">
+                        <dd class="">
+                            <a href="./table.html">学生信息查看</a>
+                        </dd>
+                        <dd class="">
+                            <a href="/demo/admin.html">详细信息</a>
+                        </dd>
+                    </dl>
+                </li>
+
+
+
+
+            </ul>
+
+        </div>
+    </div>
+    <div class="layui-body" style="min-width: 450px;" id="console1">
+        <div id="console2">
+            <h1 style="color:rgba(255,255,255,.7);">控制台</h1>
+        </div>
+        
+        
+    </div>
+  </div>
+</body>
+<script src="./layui.js"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+
+
+    })
+    
+    
+</script>
+<script>
+
+</script>
+
+</html>

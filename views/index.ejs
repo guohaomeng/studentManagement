@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/layui.css">
+
+    <title>layuiTest</title>
+    <style>
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #formcontainer {
+            width: 75%;
+            margin: auto;
+        }
+
+        @media screen and (max-width: 700px) {
+            #formcontainer {
+                width: 95%;
+                float: left;
+            }
+        }
+
+        #container {
+            min-width: 700px;
+        }
+
+        .layui-layout-admin .layui-body {
+            bottom: 0px;
+        }
+
+        .layui-form-label.layui-required:after {
+            content: "*";
+            color: red;
+            position: absolute;
+            top: 5px;
+            left: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="layui-layout layui-layout-admin">
+        <div class="layui-header header header-demo" winter="">
+            <div class="layui-main">
+                <a href="/">
+                    <span
+                        style="font-size: 18px;line-height: 60px;text-align: center;height: 60px;width: 200px;color: white;">学籍管理系统</span>
+                </a>
+
+
+                <ul style="float: right;" class="layui-nav">
+                    <li class="layui-nav-item">
+                        <a href="./console.html">控制台<span class="layui-badge">9</span></a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="">个人中心<span class="layui-badge-dot"></span></a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href=""><img src="./images/static/logo.jpg" class="layui-nav-img"><%=account%></a>
+                        <div id="userId" style="display: hidden;" ><%=ID%></div>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">修改信息</a></dd>
+                            <dd><a href="javascript:;">安全管理</a></dd>
+                            <dd><a href="/">退了</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+
+                <ul class="layui-nav layui-nav-tree">
+
+                    <li class="layui-nav-item">
+                        <a class="javascript:;" href="javascript:;"><i class="layui-icon layui-icon-username"
+                                style="font-size: 18px; color: white;"></i>学生用户<span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="./index.html">信息录入</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+                    <li class="layui-nav-item">
+                        <a class="javascript:;" href="javascript:;"><i class="layui-icon layui-icon-list"
+                                style="font-size: 22px; color: white;"></i>信息管理<span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                            <dd class="">
+                                <a href="./table.html">学生信息查看</a>
+                            </dd>
+                            <dd class="">
+                                <a href="/demo/admin.html">详细信息</a>
+                            </dd>
+                        </dl>
+                    </li>
+
+
+
+
+                </ul>
+
+            </div>
+        </div>
+        <div class="layui-body" style="min-width: 450px;">
+            <h1>信息采集</h1>
+            <div id="formcontainer">
+                <form method="POST" class="layui-form">
+                    <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+                    <div class="layui-form-item">
+                        <label class="layui-form-label layui-required">你的名字</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" placeholder="请输入" autocomplete="off" lay-verify="required"
+                                class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label layui-required">学号</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="id" placeholder="请输入" autocomplete="off" lay-verify="required"
+                                class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">性别</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="sex" value="男" title="男" checked>
+                            <input type="radio" name="sex" value="女" title="女">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label layui-required">生日</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="birthday1" placeholder="请输入" autocomplete="off"
+                                lay-verify="required|date" class="layui-input" id="birthday1">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">学院</label>
+                        <div class="layui-input-block">
+                            <select name="xueyuan" lay-filter="xueyuan">
+                                <option value="控制工程学院">控制工程学院</option>
+                                <option value="计算机与通信工程学院">计算机与通信工程学院</option>
+                                <option value="数学与统计学院">数学与统计学院</option>
+                                <option value="经济学院">经济学院</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">所在部门</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="group[front]" title="前端组">
+                            <input type="checkbox" name="group[end]" title="后端组">
+                            <input type="checkbox" name="group[database]" title="数据库组">
+                            <input type="checkbox" name="group[image]" title="图像组">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">是否在家</label>
+                        <div class="layui-input-block">
+                            <input type="checkbox" name="athome" lay-skin="switch" lay-text="是|否" checked>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">有什么建议？</label>
+                        <div class="layui-input-block">
+                            <textarea placeholder="期待你的神评论" name="comment" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="submit1">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                    <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./layui.js"></script>
+<script>
+    layui.use('element', function () {
+        var element = layui.element;
+
+
+    })
+    layui.use('form', function () {
+        var form = layui.form;
+        var $ = layui.jquery;
+        $("#userId").hide();
+        //监听提交
+        form.on('submit(submit1)', function (data) {
+            //console.log(data.elem) //被执行事件的元素DOM对象，一般为button对象
+            //console.log(data.form) //被执行提交的form对象，一般在存在form标签时才会返回
+            //console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+            var id = $("#userId").text();
+            data.field["userId"] = id ;
+            layer.msg(JSON.stringify(data.field));
+            var userData = JSON.stringify(data.field);
+            console.log(userData);
+            debugger;
+            $.ajax({
+                url:'/putForm',
+                data: "userForm=" + userData ,
+                dataType:'json',
+                type:'post',
+                success:function (data) {
+                    if (data == '1'){
+                        layer.msg('提交成功！')
+                    }else{
+                        layer.msg('提交失败');
+                    }
+                }
+            });
+
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+
+    });
+    layui.use('laydate', function () {
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#birthday1' //指定元素
+        });
+    });
+</script>
+
+
+</html>
