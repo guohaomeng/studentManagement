@@ -22,7 +22,7 @@ app.get('/testdata', (req, res) => {
 })
 //注册响应
 app.post('/register', (req, res) => {
-    var path = './datatable.json';
+    var path = './user.json';
     var userData = req.body.userData;
     userData = JSON.parse(userData);//重要
     writeJson(userData,path);
