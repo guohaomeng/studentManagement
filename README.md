@@ -1,6 +1,8 @@
 # studentManagement
+学士管理系统
+一个express+layui的入门小demo
 
-## 食用方法
+## 使用方法
 
 首先，需要安装有nodeJs以及npm
 
