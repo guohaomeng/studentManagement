@@ -22,9 +22,10 @@ app.get('/testdata', (req, res) => {
 })
 //注册响应
 app.post('/register', (req, res) => {
+    var path = './user.json';
     var userData = req.body.userData;
     userData = JSON.parse(userData);//重要
-    writeJson(userData);
+    writeJson(userData,path);
     res.send("1");
 });
 //提交表单响应
@@ -195,6 +196,7 @@ function writeJson(params) {
 
 //写入json文件选项
 function writeJson(params, jsonPath) {
+    console.log(params+'--'+jsonPath)
     //现将json文件读出来
     fs.readFile(jsonPath, function (err, data) {
         if (err) {
